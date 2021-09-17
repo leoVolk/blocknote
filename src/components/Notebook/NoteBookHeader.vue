@@ -4,7 +4,7 @@
       Week {{ weekNo }}
     </h1>
 
-    <p class="text-center font-rocksalt text-xl">
+    <p class="text-center font-semibold font-rocksalt text-xl">
       {{ weekStart }} - {{ weekEnd }}
     </p>
   </div>

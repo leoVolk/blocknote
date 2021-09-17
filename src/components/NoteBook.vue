@@ -6,6 +6,7 @@
       <div class="flex">
         <div class="xl:w-1/2">
           <note-book-header :week="week"></note-book-header>
+          <weekly-todos :weeklyTodos="weeklyTodos"></weekly-todos>
         </div>
         <div class="xl:w-1/2"></div>
       </div>
@@ -18,9 +19,10 @@ import { defineComponent } from 'vue';
 import { fetchWeeklyTodos, weeklyTodos } from '@/vuetils/useNotebook';
 import { startOfWeek, formateToSQLDate } from '@/utils/dateHelper';
 import NoteBookHeader from './Notebook/NoteBookHeader.vue';
+import WeeklyTodos from './Notebook/WeeklyTodos.vue';
 
 export default defineComponent({
-  components: { NoteBookHeader },
+  components: { NoteBookHeader, WeeklyTodos },
   async setup() {
     const week = startOfWeek(new Date());
     const weekDate = formateToSQLDate(week);

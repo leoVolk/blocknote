@@ -1,11 +1,32 @@
 <template>
-  <div></div>
+  <div class="flex flex-wrap my-6">
+    <div class="w-1/3 px-2 my-2">
+      <weekly-todo day="Monday" :todos="mondayTodos"></weekly-todo>
+    </div>
+    <div class="w-1/3 px-2 my-2">
+      <weekly-todo day="Tuesday" :todos="tuesdayTodos"></weekly-todo>
+    </div>
+    <div class="w-1/3 px-2 my-2">
+      <weekly-todo day="Wednesday" :todos="wednesdayTodos"></weekly-todo>
+    </div>
+    <div class="w-1/3 px-2 my-2">
+      <weekly-todo day="Thursday" :todos="thursdayTodos"></weekly-todo>
+    </div>
+    <div class="w-1/3 px-2 my-2">
+      <weekly-todo day="Friday" :todos="fridayTodos"></weekly-todo>
+    </div>
+    <div class="w-1/3 px-2 my-2">
+      <weekly-todo day="Weekend" :todos="weekendTodos"></weekly-todo>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue';
+import WeeklyTodo from './WeeklyTodos/WeeklyTodo.vue';
 
 export default defineComponent({
+  components: { WeeklyTodo },
   props: {
     weeklyTodos: {
       type: Array as PropType<WeeklyTodo[]>,
