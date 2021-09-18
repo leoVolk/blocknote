@@ -2,13 +2,13 @@
   <div
     class="max-w-screen-xl bg-mojo-500 mx-auto container rounded-lg px-2 py-1"
   >
-    <div class="px-6 py-4 notebook-inner rounded-lg">
-      <div class="flex">
-        <div class="xl:w-1/2">
+    <div class="notebook-inner rounded-lg">
+      <div class="flex flex-wrap">
+        <div class="lg:w-1/2 w-full px-6 py-4">
           <note-book-header :week="week"></note-book-header>
           <weekly-todos :weeklyTodos="weeklyTodos"></weekly-todos>
         </div>
-        <div class="xl:w-1/2"></div>
+        <div class="lg:w-1/2 w-full px-6 py-4"></div>
       </div>
     </div>
   </div>

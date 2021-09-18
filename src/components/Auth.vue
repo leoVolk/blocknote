@@ -9,7 +9,7 @@
         <div class="w-full mb-4">
           <label for="" class="text-lg mb-2 font-elite">Email:</label>
           <input
-            class="w-full text-xl font-elite font-thin"
+            class="w-full .login-input text-xl font-elite font-thin"
             type="text"
             v-model="email"
           />
@@ -17,7 +17,7 @@
         <div class="w-full mb-4">
           <label for="" class="text-lg font-elite mb-4">Password:</label>
           <input
-            class="w-full text-xl font-elite font-thin"
+            class="w-full .login-input text-xl font-elite font-thin"
             type="password"
             v-model="password"
           />
