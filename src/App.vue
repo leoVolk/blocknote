@@ -10,11 +10,17 @@
       v-else-if="userSession === null"
       class="w-full h-full flex flex-col justify-center items-center p-4"
     >
+      <title>Blocknote | Login</title>
       <Auth />
     </div>
-    <div v-else class="m-4">
+    <div v-else class="m-4 relative">
+      <title>Blocknote | Your Notes</title>
       <Suspense>
-        <template #default> <note-book /></template>
+        <template #default>
+          <div>
+            <note-book />
+          </div>
+        </template>
         <template #fallback>
           <Loading />
         </template>

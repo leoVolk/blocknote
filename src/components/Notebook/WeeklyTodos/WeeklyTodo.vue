@@ -14,51 +14,35 @@
         <h3 class="font-elite font-medium text-lg">{{ day }}</h3>
       </div>
     </div>
-    <div class="h-48">
-      <div class="w-full p-2 relative overflow-auto h-full">
-        <div class="flex relative items-center">
-          <div
+    <div class="h-48 px-2">
+      <input-marker-background>
+        <span class="mr-1">-</span>
+        <form @submit.prevent="addTask(false)">
+          <input
+            v-model="newTask"
+            type="text"
             class="
-              absolute
+              px-1
+              relative
               w-full
-              bg-pink-600
-              h-full
-              opacity-25
-              transform
-              rotate-2
-              rounded-md
+              !border-none
+              outline-none
+              bg-transparent
+              border-b-2 border-woodsmoke-900 border-dotted
             "
-          ></div>
-          <div
-            class="
-              absolute
-              w-full
-              bg-pink-600
-              h-full
-              transform
-              -rotate-3
-              rounded-md
-            "
-            style="opacity: 0.1"
-          ></div>
-          <span class="mr-1">-</span>
-          <form @submit.prevent="addTask(false)">
-            <input
-              v-model="newTask"
-              type="text"
-              class="
-                px-1
-                relative
-                w-full
-                !border-none
-                outline-none
-                bg-transparent
-                border-b-2 border-woodsmoke-900
-              "
-            />
-          </form>
-        </div>
-        <span v-for="(t, i) in todos" :key="i"> - {{ t.task }} <br /> </span>
+          />
+        </form>
+      </input-marker-background>
+      <div class="w-full relative overflow-auto h-full">
+        <span
+          :class="{ 'line-through': t.is_complete }"
+          class="cursor-pointer"
+          v-for="(t, i) in todos"
+          :key="i"
+          @click="updateTaskCompletion(t)"
+        >
+          - {{ t.task }} <br />
+        </span>
       </div>
     </div>
   </div>
@@ -67,11 +51,18 @@
 <script lang="ts">
 /* eslint-disable @typescript-eslint/camelcase */
 
+import InputMarkerBackground from '@/components/basics/InputMarkerBackground.vue';
 import { userSession } from '@/vuetils/useAuth';
-import { addWeeklyTodo, weeklyTodos } from '@/vuetils/useNotebook';
+import {
+  addWeeklyTodo,
+  weeklyTodos,
+  updateWeeklyTodoCompletion,
+  fetchWeeklyTodos,
+} from '@/vuetils/useNotebook';
 import { defineComponent, PropType, ref } from 'vue';
 
 export default defineComponent({
+  components: { InputMarkerBackground },
   props: {
     todos: {
       type: Array as PropType<WeeklyTodo[]>,
@@ -116,7 +107,12 @@ export default defineComponent({
       }
     };
 
-    return { newTaskInputOpen, newTask, addTask };
+    const updateTaskCompletion = async (t: WeeklyTodo) => {
+      await updateWeeklyTodoCompletion(t, !t['is_complete']);
+      await fetchWeeklyTodos(props.weekStart);
+    };
+
+    return { newTaskInputOpen, newTask, addTask, updateTaskCompletion };
   },
 });
 </script>

@@ -9,7 +9,7 @@ async function fetchWeeklyTodos(weekStart: string) {
     const { data: todos, error } =
       await supabase.from("weeklytodos").select("*")
         .eq('week_start', weekStart)
-        .eq('user_id', userSession.value?.user?.id);
+        .eq('user_id', userSession.value?.user?.id).order('is_complete');
 
     if (error) {
       console.log("error", error);
@@ -45,4 +45,29 @@ async function addWeeklyTodo(todo: WeeklyTodo): Promise<null | WeeklyTodo> {
 
 }
 
-export { weeklyTodos, fetchWeeklyTodos, addWeeklyTodo };
+/**
+ * Targets a specific todo via its record id and updates the is_completed attribute.
+ */
+async function updateWeeklyTodoCompletion(todo: WeeklyTodo, isCompleted: boolean) {
+  try {
+    const { error } = await supabase
+      .from("weeklytodos")
+      .update({ is_complete: isCompleted })
+      .eq("id", todo.id)
+      .single();
+
+    if (error) {
+      alert(error.message);
+      console.error("There was an error updating", error);
+      return;
+    }
+
+
+    console.log("Updated task", todo.id);
+  } catch (err) {
+    alert("Error");
+    console.error("Unknown problem updating record", err);
+  }
+}
+
+export { weeklyTodos, fetchWeeklyTodos, addWeeklyTodo, updateWeeklyTodoCompletion };

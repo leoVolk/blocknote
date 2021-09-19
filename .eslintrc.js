@@ -21,6 +21,7 @@ module.exports = {
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/camelcase": "off",
     "vue/html-self-closing": "off",
     "no-console": "off",
     "vue/attributes-order": "off",
