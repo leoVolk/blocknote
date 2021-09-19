@@ -9,6 +9,7 @@
               :weekSart="weekDate"
               :weeklyTodos="weeklyTodos"
             ></weekly-todos>
+            <notes></notes>
           </div>
           <div class="lg:w-1/2 w-full px-6 py-4"></div>
         </div>
@@ -32,9 +33,10 @@ import { startOfWeek, formateToSQLDate } from '@/utils/dateHelper';
 import NoteBookHeader from './Notebook/NoteBookHeader.vue';
 import WeeklyTodos from './Notebook/WeeklyTodos.vue';
 import { handleLogout } from '@/vuetils/useAuth';
+import Notes from './Notebook/Notes.vue';
 
 export default defineComponent({
-  components: { NoteBookHeader, WeeklyTodos },
+  components: { NoteBookHeader, WeeklyTodos, Notes },
   async setup() {
     const week = startOfWeek(new Date());
     const weekDate = formateToSQLDate(week);

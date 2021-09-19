@@ -45,7 +45,7 @@ async function handleSignup(credentials: Credentials) {
       console.error(error, error.message);
       return;
     }
-    alert("Signup successful, confirmation mail should be sent soon!");
+    console.log("Signup successful");
   } catch (err) {
     alert("Fatal error signing up");
     console.error("signup error", err);
