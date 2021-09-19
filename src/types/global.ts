@@ -28,7 +28,7 @@ declare interface WeeklyTodo {
   task: string;
   is_complete?: boolean;
   inserted_at?: string;
-  week_start: Date;
+  week_start: string;
   week_day: string;
   is_appointment: boolean;
 }

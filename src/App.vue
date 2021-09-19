@@ -12,7 +12,7 @@
     >
       <Auth />
     </div>
-    <div v-else class="">
+    <div v-else class="m-4">
       <Suspense>
         <template #default> <note-book /></template>
         <template #fallback>

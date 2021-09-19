@@ -25,4 +25,24 @@ async function fetchWeeklyTodos(weekStart: string) {
   } catch (err) { console.error("Error retrieving data from db", err); }
 }
 
-export { weeklyTodos, fetchWeeklyTodos };
+async function addWeeklyTodo(todo: WeeklyTodo): Promise<null | WeeklyTodo> {
+  try {
+    const { data, error } = await supabase.from('weeklytodos').insert(todo).single();
+
+    if (error) {
+      alert(error.message);
+      console.error("There was an error inserting", error);
+      return null;
+    }
+
+    console.log("created a new todo");
+    return data;
+  } catch (err) {
+    alert("Error");
+    console.error("Unknown problem inserting to db", err);
+    return null;
+  }
+
+}
+
+export { weeklyTodos, fetchWeeklyTodos, addWeeklyTodo };

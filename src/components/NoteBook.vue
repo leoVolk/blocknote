@@ -6,7 +6,10 @@
       <div class="flex flex-wrap">
         <div class="lg:w-1/2 w-full px-6 py-4">
           <note-book-header :week="week"></note-book-header>
-          <weekly-todos :weeklyTodos="weeklyTodos"></weekly-todos>
+          <weekly-todos
+            :weekSart="weekDate"
+            :weeklyTodos="weeklyTodos"
+          ></weekly-todos>
         </div>
         <div class="lg:w-1/2 w-full px-6 py-4"></div>
       </div>
@@ -32,6 +35,7 @@ export default defineComponent({
     return {
       weeklyTodos,
       week,
+      weekDate,
     };
   },
 });
