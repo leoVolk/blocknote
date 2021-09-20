@@ -55,11 +55,13 @@
         <span class="border-t-2 border-woodsmoke-900 w-full"></span>
       </div>
 
-      <div class="flex">
-        <div class="pr-2 w-1/2">
+      <div class="flex relative cursor-not-allowed">
+        <div class="pr-2 w-1/2 font-elite">
+          coming soon
           <button
+            disabled
             @click="handleOAuthLogin('github')"
-            class="btn-oAuth font-elite btn-auth shadow-box"
+            class="btn-oAuth font-elite btn-auth shadow-box opacity-25"
           >
             <span>Use Github</span>
             <svg
@@ -76,10 +78,12 @@
             </svg>
           </button>
         </div>
-        <div class="pl-2 w-1/2">
+        <div class="pl-2 w-1/2 font-elite">
+          coming soon
           <button
+            disabled
             @click="handleOAuthLogin('google')"
-            class="btn-oAuth font-elite btn-auth shadow-box"
+            class="btn-oAuth font-elite btn-auth shadow-box opacity-25"
           >
             <span>Use Google</span>
             <svg
@@ -96,6 +100,7 @@
             </svg>
           </button>
         </div>
+        <div class="absolute inset-0"></div>
       </div>
     </div>
   </main>

@@ -1,6 +1,17 @@
 <template>
   <div id="app" class="w-full h-full flex flex-col justify-center">
-    <div class="container font-sans text-sm opacity-25 text-white mx-auto">
+    <div
+      class="
+        absolute
+        left-0
+        top-0
+        font-sans
+        text-sm
+        opacity-50
+        text-white
+        mx-auto
+      "
+    >
       work in progress (v.0.0.5)
     </div>
     <div
