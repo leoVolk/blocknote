@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <h1 class="text-center font-lobster text-shadow text-6xl">
+    <h1 class="text-center select-none font-lobster text-shadow text-6xl">
       Week {{ weekNo }}
     </h1>
     <div class="flex justify-around items-center">
@@ -18,7 +18,7 @@
             d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
           /></svg
       ></span>
-      <p class="text-center font-semibold font-rocksalt text-xl">
+      <p class="text-center select-none font-semibold font-rocksalt text-xl">
         {{ weekStart }} - {{ weekEnd }}
       </p>
       <span class="cursor-pointer" @click="onNextWeek"

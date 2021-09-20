@@ -41,7 +41,15 @@ body {
   text-shadow: 2px 1px 0 #fbfae8, 5px 4px 0 coral;
 }
 
+.weekday-box-shadow {
+  box-shadow: 3px 3px 0 0 rgb(208 91 88 / 70%);
+}
+
 .shadow-box {
+  box-shadow: 3px 3px 0 0 rgb(208 91 88 / 75%);
+}
+
+.shadow-box-noeffect {
   box-shadow: 3px 3px 0 0 rgb(208 91 88 / 75%);
 }
 

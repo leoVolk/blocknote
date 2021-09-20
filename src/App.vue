@@ -12,7 +12,7 @@
         mx-auto
       "
     >
-      work in progress (v.0.0.5)
+      work in progress (v.{{ info.version }})
     </div>
     <div
       v-if="showPasswordReset"
@@ -50,7 +50,7 @@ import Loading from '@/components/Loading.vue';
 import { userSession, handleLogout } from '@/vuetils/useAuth';
 import { getParameterByName } from '@/lib/helpers';
 import NoteBook from './components/NoteBook.vue';
-
+import info from '../package.json';
 export default {
   components: {
     Auth,
@@ -65,7 +65,7 @@ export default {
     },
   },
   setup() {
-    return { userSession, handleLogout };
+    return { userSession, handleLogout, info };
   },
 };
 </script>

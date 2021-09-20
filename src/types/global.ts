@@ -40,4 +40,11 @@ declare interface Note {
   week_start: string;
 }
 
-
+// TODO: REWORK EXPENSE
+declare interface Expense {
+  id?: number;
+  user_id: string;
+  week_start: string;
+  type: string;
+  amount: string;
+}

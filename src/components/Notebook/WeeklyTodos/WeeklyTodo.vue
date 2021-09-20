@@ -1,8 +1,8 @@
 <template>
-  <div class="border-woodsmoke-900 border-2 h-full">
+  <div class="border-woodsmoke-900 border-2 h-full weekday-box-shadow">
     <div class="w-full px-2 py-1 border-b-2 border-woodsmoke-900 h-10">
       <div class="flex justify-between h-full items-center">
-        <h3 class="font-elite font-medium text-lg">{{ day }}</h3>
+        <h3 class="font-elite font-medium text-lg select-none">{{ day }}</h3>
       </div>
     </div>
     <div class="px-2">
