@@ -42,7 +42,7 @@
             </span> -->
           </form>
         </input-marker-background>
-        <div class="h-20 overflow-auto mt-2">
+        <div class="lg:h-20 h-48 overflow-auto mt-2">
           <ul class="text-lg">
             <li v-for="(n, i) in allNotes" :key="i">
               <div class="flex justify-between items-center">
@@ -62,7 +62,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import InputMarkerBackground from '@/components/basics/InputMarkerBackground.vue';
-import { allNotes, fetchNotes, addNote, deleteNote } from '@/vuetils/useNote';
+import { allNotes, addNote, deleteNote } from '@/vuetils/useNote';
 import { userSession } from '@/vuetils/useAuth';
 
 export default defineComponent({
@@ -77,7 +77,6 @@ export default defineComponent({
   },
   async setup(props) {
     const newNote = ref('');
-    await fetchNotes(props.weekStart);
 
     const insertNote = async () => {
       if (userSession?.value === null || userSession?.value.user === null) {

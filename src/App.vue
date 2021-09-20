@@ -1,5 +1,8 @@
 <template>
   <div id="app" class="w-full h-full flex flex-col justify-center">
+    <div class="container font-sans text-sm opacity-25 text-white mx-auto">
+      work in progress (v.0.0.5)
+    </div>
     <div
       v-if="showPasswordReset"
       class="w-full h-full flex flex-col justify-center items-center p-4"

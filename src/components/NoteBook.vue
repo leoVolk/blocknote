@@ -4,7 +4,12 @@
       <div class="notebook-inner rounded-lg">
         <div class="flex flex-wrap">
           <div class="lg:w-1/2 w-full px-6 py-4">
-            <note-book-header :week="week"></note-book-header>
+            <note-book-header
+              @prevWeek="fetchDataLastWeek()"
+              @nextWeek="fetchDataNextWeek()"
+              :week="week"
+            ></note-book-header>
+
             <weekly-todos
               :weekSart="weekDate"
               :weeklyTodos="weeklyTodos"
@@ -27,27 +32,57 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import { fetchWeeklyTodos, weeklyTodos } from '@/vuetils/useTodo';
 import { startOfWeek, formateToSQLDate } from '@/utils/dateHelper';
 import NoteBookHeader from './Notebook/NoteBookHeader.vue';
 import WeeklyTodos from './Notebook/WeeklyTodos.vue';
 import { handleLogout } from '@/vuetils/useAuth';
 import Notes from './Notebook/Notes.vue';
+import { fetchNotes } from '@/vuetils/useNote';
 
 export default defineComponent({
   components: { NoteBookHeader, WeeklyTodos, Notes },
   async setup() {
-    const week = startOfWeek(new Date());
-    const weekDate = formateToSQLDate(week);
+    const currentDate = ref(new Date());
+    const week = ref(startOfWeek(currentDate.value));
+    const weekDate = ref(formateToSQLDate(week.value));
 
-    await fetchWeeklyTodos(weekDate);
+    const fetchDataLastWeek = async () => {
+      currentDate.value = new Date(
+        currentDate.value.getTime() - 7 * 24 * 60 * 60 * 1000
+      );
+      const prevWeek = formateToSQLDate(startOfWeek(currentDate.value));
+
+      week.value = startOfWeek(currentDate.value);
+      weekDate.value = formateToSQLDate(week.value);
+      await fetchWeeklyTodos(prevWeek);
+      await fetchNotes(prevWeek);
+    };
+
+    const fetchDataNextWeek = async () => {
+      currentDate.value = new Date(
+        currentDate.value.getTime() + 7 * 24 * 60 * 60 * 1000
+      );
+      const prevWeek = formateToSQLDate(startOfWeek(currentDate.value));
+
+      week.value = startOfWeek(currentDate.value);
+      weekDate.value = formateToSQLDate(week.value);
+      await fetchWeeklyTodos(prevWeek);
+      await fetchNotes(prevWeek);
+    };
+
+    await fetchWeeklyTodos(weekDate.value);
+    await fetchNotes(weekDate.value);
 
     return {
       weeklyTodos,
       week,
       weekDate,
       handleLogout,
+      fetchDataLastWeek,
+      fetchDataNextWeek,
+      currentDate,
     };
   },
 });
