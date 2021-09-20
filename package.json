@@ -1,11 +1,11 @@
 {
   "name": "blocknote",
-  "version": "0.1.6",
+  "version": "0.10.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "start": "vue-cli-service serve",
-    "build": "yarn version && vue-cli-service build",
+    "build": "yarn version --minor && vue-cli-service build",
     "lint": "vue-cli-service lint",
     "vite": "node ./bin/vite"
   },
