@@ -31,7 +31,7 @@ body {
   display: none;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1440px) {
   .notebook-inner::after {
     display: block;
   }

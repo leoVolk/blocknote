@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="w-full h-full flex flex-col justify-center">
+  <div id="app" class="w-full transform h-full flex flex-col justify-center">
     <div
       class="
         absolute
@@ -31,7 +31,7 @@
       <title>Blocknote | Your Notes</title>
       <Suspense>
         <template #default>
-          <div>
+          <div class="">
             <note-book />
           </div>
         </template>
