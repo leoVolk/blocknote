@@ -33,4 +33,11 @@ declare interface WeeklyTodo {
   is_appointment: boolean;
 }
 
+declare interface Note {
+  id?: number;
+  user_id: string;
+  note: string;
+  week_start: string;
+}
+
 

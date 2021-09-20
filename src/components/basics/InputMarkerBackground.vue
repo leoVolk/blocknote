@@ -1,5 +1,5 @@
 <template>
-  <div class="flex my-2 relative items-center">
+  <div class="flex mt-2 relative items-center">
     <div
       class="
         absolute
@@ -7,13 +7,13 @@
         bg-flamingo-400
         h-full
         transform
-        rotate-2
+        rotate-1
         rounded-sm
       "
       style="opacity: 0.25"
     ></div>
     <div
-      class="absolute w-full bg-pink-600 h-full transform -rotate-3 rounded-sm"
+      class="absolute w-full bg-pink-600 h-full transform rounded-sm"
       style="opacity: 0.1"
     ></div>
     <slot></slot>

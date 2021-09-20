@@ -63,21 +63,21 @@ body {
 }
 
 /* This will work on Firefox */
-* {
+.notebook-inner {
   scrollbar-width: thin;
   scrollbar-color: blue orange;
 }
 
 /* Targtes on Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
+.notebook-inner ::-webkit-scrollbar {
   width: 12px;
 }
 
-*::-webkit-scrollbar-track {
+.notebook-inner ::-webkit-scrollbar-track {
   background: rgba(255, 166, 0, 0);
 }
 
-*::-webkit-scrollbar-thumb {
+.notebook-inner ::-webkit-scrollbar-thumb {
   background-color: #111111;
   border-radius: 20px;
   border: 3px solid #fbfae8;

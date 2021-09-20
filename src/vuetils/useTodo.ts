@@ -1,45 +1,33 @@
-/* eslint-disable @typescript-eslint/camelcase */
-import { supabase } from "@/lib/supabase";
 import { ref } from "vue";
+import { supabase } from "@/lib/supabase";
+import { userSession } from "@/vuetils/useAuth";
 
-const allTodos = ref<Todo[]>([]);
+const weeklyTodos = ref<WeeklyTodo[]>([]);
 
-/**
- * Retreive all todo for the signed in user
- */
-async function fetchTodos() {
+async function fetchWeeklyTodos(weekStart: string) {
   try {
-    const { data: todos, error } = await supabase
-      .from("todos")
-      .select("*")
-      .order("id");
+    const { data: todos, error } =
+      await supabase.from("weeklytodos").select("*")
+        .eq('week_start', weekStart)
+        .eq('user_id', userSession.value?.user?.id).order('is_complete');
 
     if (error) {
       console.log("error", error);
       return;
     }
-    // handle for when no todos are returned
+
     if (todos === null) {
-      allTodos.value = [];
+      weeklyTodos.value = [];
       return;
     }
-    // store response to allTodos
-    allTodos.value = todos;
-    console.log("got todos!", allTodos.value);
-  } catch (err) {
-    console.error("Error retrieving data from db", err);
-  }
+
+    weeklyTodos.value = todos;
+  } catch (err) { console.error("Error retrieving data from db", err); }
 }
 
-/**
- *  Add a new todo to supabase
- */
-async function addTodo(todo: Todo): Promise<null | Todo> {
+async function addWeeklyTodo(todo: WeeklyTodo): Promise<null | WeeklyTodo> {
   try {
-    const { data, error } = await supabase
-      .from("todos")
-      .insert(todo)
-      .single();
+    const { data, error } = await supabase.from('weeklytodos').insert(todo).single();
 
     if (error) {
       alert(error.message);
@@ -54,15 +42,16 @@ async function addTodo(todo: Todo): Promise<null | Todo> {
     console.error("Unknown problem inserting to db", err);
     return null;
   }
+
 }
 
 /**
  * Targets a specific todo via its record id and updates the is_completed attribute.
  */
-async function updateTaskCompletion(todo: Todo, isCompleted: boolean) {
+async function updateWeeklyTodoCompletion(todo: WeeklyTodo, isCompleted: boolean) {
   try {
     const { error } = await supabase
-      .from("todos")
+      .from("weeklytodos")
       .update({ is_complete: isCompleted })
       .eq("id", todo.id)
       .single();
@@ -73,6 +62,7 @@ async function updateTaskCompletion(todo: Todo, isCompleted: boolean) {
       return;
     }
 
+
     console.log("Updated task", todo.id);
   } catch (err) {
     alert("Error");
@@ -80,19 +70,4 @@ async function updateTaskCompletion(todo: Todo, isCompleted: boolean) {
   }
 }
 
-/**
- *  Deletes a todo via its id
- */
-async function deleteTodo(todo: Todo) {
-  try {
-    await supabase
-      .from("todos")
-      .delete()
-      .eq("id", todo.id);
-    console.log("deleted todo", todo.id);
-  } catch (error) {
-    console.error("error", error);
-  }
-}
-
-export { allTodos, fetchTodos, addTodo, updateTaskCompletion, deleteTodo };
+export { weeklyTodos, fetchWeeklyTodos, addWeeklyTodo, updateWeeklyTodoCompletion };

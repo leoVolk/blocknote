@@ -1,20 +1,11 @@
 <template>
   <div class="border-woodsmoke-900 border-2 h-full">
-    <div
-      class="
-        cursor-pointer
-        w-full
-        px-2
-        py-1
-        border-b-2 border-woodsmoke-900
-        h-10
-      "
-    >
-      <div @click="addTask()" class="flex justify-between h-full items-center">
+    <div class="w-full px-2 py-1 border-b-2 border-woodsmoke-900 h-10">
+      <div class="flex justify-between h-full items-center">
         <h3 class="font-elite font-medium text-lg">{{ day }}</h3>
       </div>
     </div>
-    <div class="h-48 px-2">
+    <div class="px-2">
       <input-marker-background>
         <span class="mr-1">-</span>
         <form @submit.prevent="addTask(false)">
@@ -33,10 +24,10 @@
           />
         </form>
       </input-marker-background>
-      <div class="w-full relative overflow-auto h-full">
+      <div class="w-full h-40 mt-2 relative overflow-auto">
         <span
           :class="{ 'line-through': t.is_complete }"
-          class="cursor-pointer"
+          class="cursor-pointer text-lg"
           v-for="(t, i) in todos"
           :key="i"
           @click="updateTaskCompletion(t)"
@@ -58,7 +49,7 @@ import {
   weeklyTodos,
   updateWeeklyTodoCompletion,
   fetchWeeklyTodos,
-} from '@/vuetils/useNotebook';
+} from '@/vuetils/useTodo';
 import { defineComponent, PropType, ref } from 'vue';
 
 export default defineComponent({

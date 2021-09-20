@@ -1,5 +1,15 @@
 <template>
-  <main class="w-full sm:w-1/2 xl:w-1/4 bg-mojo-500 rounded-2xl">
+  <main
+    class="
+      w-full
+      container
+      sm:w-1/2
+      xl:w-1/3
+      max-w-screen-md
+      bg-mojo-500
+      rounded-2xl
+    "
+  >
     <div class="mx-2 my-1 bg-buttery-white-500 p-6 rounded-2xl">
       <h1 class="font-lobster text-center text-6xl text-shadow">Welcome</h1>
       <p class="text-center text-xl font-elite">

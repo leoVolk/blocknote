@@ -9,7 +9,7 @@
               :weekSart="weekDate"
               :weeklyTodos="weeklyTodos"
             ></weekly-todos>
-            <notes></notes>
+            <notes :weekStart="weekDate"></notes>
           </div>
           <div class="lg:w-1/2 w-full px-6 py-4"></div>
         </div>
@@ -28,7 +28,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { fetchWeeklyTodos, weeklyTodos } from '@/vuetils/useNotebook';
+import { fetchWeeklyTodos, weeklyTodos } from '@/vuetils/useTodo';
 import { startOfWeek, formateToSQLDate } from '@/utils/dateHelper';
 import NoteBookHeader from './Notebook/NoteBookHeader.vue';
 import WeeklyTodos from './Notebook/WeeklyTodos.vue';
