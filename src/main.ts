@@ -1,5 +1,5 @@
 import "./assets/style/main.css";
-import 'sweetalert2/dist/sweetalert2.min.css';
+import './registerServiceWorker';
 
 import App from "./App.vue";
 import { createApp } from "vue";
