@@ -14,7 +14,7 @@ module.exports = {
   },
   rules: {
     "eqeqeq": "error",
-    "no-console": "warn",
+    "no-console": "off",
     "no-undef": "off",
     "no-unused-vars": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
@@ -23,7 +23,6 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/camelcase": "off",
     "vue/html-self-closing": "off",
-    "no-console": "off",
     "vue/attributes-order": "off",
     "vue/order-in-components": "off",
     "vue/component-tags-order": "off",
