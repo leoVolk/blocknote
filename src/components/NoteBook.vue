@@ -18,13 +18,13 @@
           </div>
           <div class="xl:w-1/2 w-full px-6 py-4">
             <div class="flex flex-wrap lg:flex-no-wrap">
-              <div class="lg:w-1/2 w-full order-2 lg:order-1">
+              <div class="lg:w-1/2 w-full">
                 <weekly-expenses
                   :weekStart="weekDate"
                   :expenses="allExpenses"
                 ></weekly-expenses>
               </div>
-              <div class="lg:w-1/2 order-1 lg:order-2 w-full my-8 mx-8">
+              <div class="lg:w-1/2 w-full my-8">
                 <note-book-image></note-book-image>
               </div>
             </div>

@@ -162,7 +162,7 @@ export default defineComponent({
 <style lang="postcss">
 .expenses-box {
   @apply border-woodsmoke-900 border-2
-              px-4
+              px-2
               py-1
               mx-2
               text-2xl

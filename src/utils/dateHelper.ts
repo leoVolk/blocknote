@@ -31,7 +31,7 @@ const startAndEndOfWeek = (date: Date): Date[] => {
 };
 
 const formatDateToMonthAndDay = (date: Date): string => {
-  return date.toLocaleString('default', { month: 'long' }) + ' ' + date.toLocaleString('default', { day: '2-digit' });
+  return date.toLocaleDateString('default', { month: 'long' }) + ' ' + date.toLocaleString('default', { day: '2-digit' });
 };
 
 const currentWeek = (d: Date): number => {
