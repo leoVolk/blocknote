@@ -1,5 +1,5 @@
 <template>
-  <div class="transform rotate-3 bg-white shadow-md p-8 h-96 relative">
+  <div class="transform rotate-3 bg-white shadow-md p-8 relative">
     <div class="flex justify-center relative">
       <div
         class="
@@ -17,7 +17,7 @@
     </div>
     <img
       class="object-cover mx-auto"
-      style="height: 20rem"
+      style="height: 18rem"
       src="https://source.unsplash.com/random/?city,sunset"
     />
   </div>

@@ -30,15 +30,25 @@
             </div>
           </div>
         </div>
+        <div class="w-full flex justify-end">
+          <button
+            @click="handleLogout()"
+            class="
+              btn-oAuth
+              mx-4
+              mb-4
+              w-full
+              sm:w-auto
+              font-elite
+              btn-auth
+              shadow-box
+              bg-buttery-white-500
+            "
+          >
+            Sign Out
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="w-full mt-4 flex justify-end">
-      <button
-        @click="handleLogout()"
-        class="btn-oAuth font-elite btn-auth shadow-box bg-buttery-white-500"
-      >
-        Sign Out
-      </button>
     </div>
   </div>
 </template>
