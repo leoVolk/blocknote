@@ -1,11 +1,22 @@
 <template>
   <div class="border-woodsmoke-900 border-2 h-full weekday-box-shadow">
-    <div class="w-full px-2 py-1 border-b-2 border-woodsmoke-900 h-10">
-      <div class="flex justify-between h-full items-center">
+    <div
+      class="w-full px-2 py-1 h-10"
+      :class="{ 'border-b-2 border-woodsmoke-900': !isCollapsed }"
+    >
+      <div
+        @click="isCollapsed = !isCollapsed"
+        class="flex justify-between h-full items-center"
+      >
         <h3 class="font-elite font-medium text-lg select-none">{{ day }}</h3>
+
+        <div class="block lg:hidden">
+          <span v-if="isCollapsed">open</span>
+          <span v-else>close </span>
+        </div>
       </div>
     </div>
-    <div class="px-2">
+    <div :class="{ 'lg:block hidden': isCollapsed }" class="px-2">
       <input-marker-background>
         <span class="mr-1">-</span>
         <form @submit.prevent="addTask(false)">
@@ -71,7 +82,7 @@ export default defineComponent({
   },
   setup(props) {
     const newTask = ref('');
-    const newTaskInputOpen = ref(false);
+    const isCollapsed = ref(true);
 
     const addTask = async (isAppointment: boolean) => {
       if (userSession?.value === null || userSession?.value.user === null) {
@@ -103,7 +114,12 @@ export default defineComponent({
       await fetchWeeklyTodos(props.weekStart);
     };
 
-    return { newTaskInputOpen, newTask, addTask, updateTaskCompletion };
+    return {
+      newTask,
+      addTask,
+      updateTaskCompletion,
+      isCollapsed,
+    };
   },
 });
 </script>

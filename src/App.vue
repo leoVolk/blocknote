@@ -22,12 +22,12 @@
     </div>
     <div
       v-else-if="userSession === null"
-      class="w-full h-full flex flex-col justify-center items-center p-4"
+      class="w-full h-full flex flex-col justify-center items-center lg:p-4"
     >
       <title>Blocknote | Login</title>
       <Auth />
     </div>
-    <div v-else class="m-4 relative">
+    <div v-else class="lg:m-4 relative">
       <title>Blocknote | Your Notes</title>
       <Suspense>
         <template #default>

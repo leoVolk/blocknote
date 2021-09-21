@@ -1,7 +1,7 @@
 <template>
-  <div class="max-w-screen-xl mx-auto container transform xl:scale-110">
-    <div class="bg-mojo-500 rounded-lg px-2 py-1">
-      <div class="notebook-inner rounded-lg">
+  <div class="max-w-screen-xl mx-auto container transform">
+    <div class="bg-mojo-500 rounded-lg lg:px-2 lg:py-1">
+      <div class="notebook-inner lg:rounded-lg">
         <div class="flex flex-wrap">
           <div class="xl:w-1/2 w-full px-6 py-4">
             <note-book-header
@@ -17,12 +17,15 @@
             <notes :weekStart="weekDate"></notes>
           </div>
           <div class="xl:w-1/2 w-full px-6 py-4">
-            <div class="flex">
-              <div class="lg:w-1/2 w-full">
+            <div class="flex flex-wrap lg:flex-no-wrap">
+              <div class="lg:w-1/2 w-full order-2 lg:order-1">
                 <weekly-expenses
                   :weekStart="weekDate"
                   :expenses="allExpenses"
                 ></weekly-expenses>
+              </div>
+              <div class="lg:w-1/2 order-1 lg:order-2 w-full my-8 mx-8">
+                <note-book-image></note-book-image>
               </div>
             </div>
           </div>
@@ -51,8 +54,15 @@ import Notes from './Notebook/Notes.vue';
 import { fetchNotes } from '@/vuetils/useNote';
 import WeeklyExpenses from './Notebook/WeeklyExpenses.vue';
 import { allExpenses, fetchExpenses } from '@/vuetils/useExpense';
+import NoteBookImage from './Notebook/NoteBookImage.vue';
 export default defineComponent({
-  components: { NoteBookHeader, WeeklyTodos, Notes, WeeklyExpenses },
+  components: {
+    NoteBookHeader,
+    WeeklyTodos,
+    Notes,
+    WeeklyExpenses,
+    NoteBookImage,
+  },
   async setup() {
     const currentDate = ref(new Date());
     const week = ref(startOfWeek(currentDate.value));
