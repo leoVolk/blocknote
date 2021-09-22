@@ -1,31 +1,32 @@
 <template>
-  <div class="mt-12 border-2 border-woodsmoke-900 mr-2 relative notes">
-    <span class="font-lobster notes-headline w-auto text-3xl text-shadow"
-      >notes</span
-    >
-    <div class="mt-2 p-4">
-      <div class="">
-        <input-marker-background>
-          <form
-            class="w-full relative flex group"
-            @submit.prevent="insertNote()"
-          >
-            <span class="mr-1">-</span>
-            <input
-              v-model="newNote"
-              type="text"
-              class="
-                text-lg
-                px-1
-                relative
-                w-full
-                !border-none
-                outline-none
-                bg-transparent
-                border-b-2 border-woodsmoke-900 border-dotted
-              "
-            />
-            <!--   <span class="absolute w-8 h-8 right-0">
+  <div class="relative notes pt-12">
+    <div class="border-2 border-woodsmoke-900 mr-2">
+      <span class="font-lobster notes-headline w-auto text-3xl text-shadow"
+        >notes</span
+      >
+      <div class="mt-2 p-4">
+        <div class="">
+          <input-marker-background>
+            <form
+              class="w-full relative flex group"
+              @submit.prevent="insertNote()"
+            >
+              <span class="mr-1">-</span>
+              <input
+                v-model="newNote"
+                type="text"
+                class="
+                  text-lg
+                  px-1
+                  relative
+                  w-full
+                  !border-none
+                  outline-none
+                  bg-transparent
+                  border-b-2 border-woodsmoke-900 border-dotted
+                "
+              />
+              <!--   <span class="absolute w-8 h-8 right-0">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
@@ -40,19 +41,20 @@
                 />
               </svg>
             </span> -->
-          </form>
-        </input-marker-background>
-        <div class="lg:h-20 h-48 overflow-auto mt-2">
-          <ul class="text-lg">
-            <li v-for="(n, i) in allNotes" :key="i">
-              <div class="flex justify-between items-center">
-                <span>- {{ n.note }}</span>
-                <span @click="removeNote(n)" class="cursor-pointer px-2"
-                  >x</span
-                >
-              </div>
-            </li>
-          </ul>
+            </form>
+          </input-marker-background>
+          <div class="lg:h-20 h-48 overflow-auto mt-2">
+            <ul class="text-lg">
+              <li v-for="(n, i) in allNotes" :key="i">
+                <div class="flex justify-between items-center">
+                  <span>- {{ n.note }}</span>
+                  <span @click="removeNote(n)" class="cursor-pointer px-2"
+                    >x</span
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

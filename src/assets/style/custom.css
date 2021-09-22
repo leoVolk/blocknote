@@ -49,6 +49,10 @@ body {
   box-shadow: 3px 3px 0 0 rgb(208 91 88 / 75%);
 }
 
+.shadow-box-top {
+  box-shadow: 0 -5px 0 0 rgb(208 91 88 / 75%);
+}
+
 .shadow-box-noeffect {
   box-shadow: 3px 3px 0 0 rgb(208 91 88 / 75%);
 }

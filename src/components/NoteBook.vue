@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-screen-xl mx-auto container transform">
+  <div class="max-w-screen-xl mx-auto container">
     <div class="bg-mojo-500 rounded-lg lg:px-2 lg:py-1">
       <div class="notebook-inner lg:rounded-lg">
         <div class="flex flex-wrap">
@@ -11,15 +11,17 @@
             ></note-book-header>
 
             <weekly-todos
+              id="todos"
               :weekSart="weekDate"
               :weeklyTodos="weeklyTodos"
             ></weekly-todos>
-            <notes :weekStart="weekDate"></notes>
+            <notes id="notes" :weekStart="weekDate"></notes>
           </div>
           <div class="xl:w-1/2 w-full px-6 py-4">
             <div class="flex flex-wrap lg:flex-no-wrap">
               <div class="lg:w-1/2 w-full">
                 <weekly-expenses
+                  id="expenses"
                   :weekStart="weekDate"
                   :expenses="allExpenses"
                 ></weekly-expenses>
@@ -50,6 +52,7 @@
         </div>
       </div>
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -63,6 +66,7 @@ import { handleLogout } from '@/vuetils/useAuth';
 import Notes from './Notebook/Notes.vue';
 import { fetchNotes } from '@/vuetils/useNote';
 import WeeklyExpenses from './Notebook/WeeklyExpenses.vue';
+import Footer from './Footer.vue';
 import { allExpenses, fetchExpenses } from '@/vuetils/useExpense';
 import NoteBookImage from './Notebook/NoteBookImage.vue';
 export default defineComponent({
@@ -72,6 +76,7 @@ export default defineComponent({
     Notes,
     WeeklyExpenses,
     NoteBookImage,
+    Footer,
   },
   async setup() {
     const currentDate = ref(new Date());
