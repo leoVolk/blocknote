@@ -5,9 +5,12 @@ body {
 }
 
 .notebook-inner {
-  background: linear-gradient(90deg, #fbfae8 15px, transparent 1%) center,
+  /*   background: linear-gradient(90deg, #fbfae8 15px, transparent 1%) center,
     linear-gradient(#fbfae8 15px, transparent 1%) center, #ccc;
-  background-size: 16px 16px;
+  background-size: 16px 16px; */
+  background-image: linear-gradient(#e4e4e4 1px, #fbfae8 1px),
+    linear-gradient(90deg, #e4e4e4 1px, #fbfae8 1px);
+  background-size: 10px 20px, 10px 20px, 2px 2px, 2px 2px;
   position: relative;
 }
 
