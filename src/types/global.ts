@@ -52,3 +52,11 @@ declare interface Expense {
   other?: number;
   savings?: number;
 }
+
+declare interface Goal {
+  id?: number;
+  user_id?: string;
+  week_start?: string;
+  title?: string;
+  is_complete: boolean;
+}

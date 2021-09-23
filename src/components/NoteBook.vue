@@ -30,9 +30,13 @@
                 <note-book-image></note-book-image>
               </div>
             </div>
+            <weekly-goals
+              :goals="allGoals"
+              :weekStart="weekDate"
+            ></weekly-goals>
           </div>
         </div>
-        <div class="w-full flex justify-end">
+        <div class="w-full lg:flex justify-end hidden">
           <button
             @click="handleLogout()"
             class="
@@ -69,6 +73,8 @@ import WeeklyExpenses from './Notebook/WeeklyExpenses.vue';
 import Footer from './Footer.vue';
 import { allExpenses, fetchExpenses } from '@/vuetils/useExpense';
 import NoteBookImage from './Notebook/NoteBookImage.vue';
+import WeeklyGoals from './Notebook/WeeklyGoals.vue';
+import { allGoals, fetchGoals } from '@/vuetils/useGoal';
 export default defineComponent({
   components: {
     NoteBookHeader,
@@ -77,6 +83,7 @@ export default defineComponent({
     WeeklyExpenses,
     NoteBookImage,
     Footer,
+    WeeklyGoals,
   },
   async setup() {
     const currentDate = ref(new Date());
@@ -87,6 +94,7 @@ export default defineComponent({
       await fetchExpenses(week);
       await fetchWeeklyTodos(week);
       await fetchNotes(week);
+      await fetchGoals(week);
     };
 
     const fetchDataLastWeek = async () => {
@@ -122,6 +130,7 @@ export default defineComponent({
       fetchDataNextWeek,
       currentDate,
       allExpenses,
+      allGoals,
     };
   },
 });

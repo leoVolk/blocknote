@@ -1,14 +1,14 @@
 <template>
   <div class="relative notes pt-12">
     <div class="border-2 border-woodsmoke-900 mr-2">
-      <span class="font-lobster notes-headline w-auto text-3xl text-shadow"
+      <span class="font-lobster notes-headline w-auto text-4xl text-shadow"
         >notes</span
       >
       <div class="mt-2 p-4">
-        <div class="">
+        <div class="mt-4">
           <input-marker-background>
             <form
-              class="w-full relative flex group"
+              class="w-full relative items-center flex group"
               @submit.prevent="insertNote()"
             >
               <span class="mr-1">-</span>
@@ -43,7 +43,10 @@
             </span> -->
             </form>
           </input-marker-background>
-          <div class="lg:h-20 h-48 overflow-auto mt-2">
+          <div
+            class="lg:h-20 h-48 overflow-auto mt-2 resize-y"
+            style="min-height: 80px !important"
+          >
             <ul class="text-lg">
               <li v-for="(n, i) in allNotes" :key="i">
                 <div class="flex justify-between items-center">
@@ -115,7 +118,7 @@ export default defineComponent({
 
 <style lang="postcss">
 .notes .notes-headline {
-  margin: -28px 28px;
+  margin: -34px 28px;
   display: block;
 }
 </style>
